@@ -6,12 +6,14 @@
 var express = require('express');
 var app = express();
 var moment = require('moment');
+var path = require('path');
 //
 // ## SimpleServer `SimpleServer(obj)`
 //
 // Creates a new instance of SimpleServer with the following options:
 //  * `port` - The HTTP port to listen on. If `process.env.PORT` is set, _it overrides this value_.
 //
+app.use(express.static(path.join(__dirname,'public')));
 app.get('/:date',function(req,res){
     var out = {
         unix: null,
