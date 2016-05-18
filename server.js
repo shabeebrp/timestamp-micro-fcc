@@ -21,11 +21,11 @@ app.get('/:date',function(req,res){
     }
     if(!isNaN(req.params.date)){
           out.unix = +req.params.date;
-          out.natuaral = moment(+req.params.date).format('MMMM DD, YYYY');
+          out.natuaral = moment(+(req.params.date)*1000).format('MMMM DD, YYYY');
       }
     else if(!isNaN(Date.parse(req.params.date))){
-        
-         out.unix = Date.parse(req.params.date);
+       // var date = moment(req.params.date,'MMMM DD, YYYY');
+         out.unix =moment(req.params.date,'MMMM DD, YYYY').format('X');
          out.natuaral = req.params.date;
       }
 
