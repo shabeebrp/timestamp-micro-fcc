@@ -1,0 +1,15 @@
+{
+  "name": "timestamp-micro-fcc",
+  "version": "1.0.0",
+  "description": "free code camp timestamp micro service challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "shabeebrp",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
