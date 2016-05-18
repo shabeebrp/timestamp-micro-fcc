@@ -5,14 +5,29 @@
 //
 var express = require('express');
 var app = express();
+var moment = require('moment');
 //
 // ## SimpleServer `SimpleServer(obj)`
 //
 // Creates a new instance of SimpleServer with the following options:
 //  * `port` - The HTTP port to listen on. If `process.env.PORT` is set, _it overrides this value_.
 //
-app.get('/',function(req,res){
-  res.end('Hello world\n');
+app.get('/:date',function(req,res){
+    var out = {
+        unix: null,
+        natuaral: null
+    }
+    if(!isNaN(req.params.date)){
+          out.unix = +req.params.date;
+          out.natuaral = moment(+req.params.date).format('MMMM DD, YYYY');
+      }
+    else if(!isNaN(Date.parse(req.params.date))){
+        
+         out.unix = Date.parse(req.params.date);
+         out.natuaral = req.params.date;
+      }
+
+    res.send(out);
 })
 app.listen(process.env.PORT || 3000, function(){
   console.log("Chat server listening at "+process.env.PORT);
